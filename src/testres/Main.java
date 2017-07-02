@@ -20,6 +20,7 @@ public class Main {
             wuio.testInputStream();
             wuio.testReader();
             wuio.testOutputStream();
+            wuio.testCopuFile();
         } catch (IOException e) {
             e.printStackTrace();
         }

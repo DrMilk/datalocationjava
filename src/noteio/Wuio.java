@@ -1,5 +1,7 @@
 package noteio;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.io.*;
 
 /**
@@ -89,20 +91,28 @@ public class Wuio {
         File file=new File("F:\\不测试\\teat.txt");
         FileOutputStream ops=new FileOutputStream(file);
         String content="efwefwefwefwgwegweg";
-        ObjectOutputStream oos=new ObjectOutputStream(ops);
-        oos.writeObject(content);
-        oos.flush();
-        oos.close();
+//        ObjectOutputStream oos=new ObjectOutputStream(ops);
+//        oos.writeObject(content);
+//        oos.flush();
+//        oos.close();
+        ops.write(content.getBytes());
         ops.close();
-//        byte [] buffer=new byte[10];
-//        int len=0;
-//        int time=content.length()/10;
-//        if(content.length()%10!=0){
-//            time++;
-//        }
-//        byte [] contentBytes=content.getBytes();
-//        for(int i=0;i<time;i++){
-//            ops.write(contentBytes,i*10,len);
-//        }
+    }
+    public void testCopuFile() throws IOException{
+        //1.创建定位到文件的输入流
+        InputStream is=new FileInputStream("F:\\我的视频\\试做.mp4");
+        //2.创建定位到文件的输出流
+        OutputStream os=new FileOutputStream("F:\\我的视频\\试做3.mp4");
+        //3.创建一个byte数组，用于读写文件
+        byte [] buffer=new byte[1024*10];
+        int len=0;
+        //4.读写为我年间：
+        while ((len=is.read(buffer))!=-1){
+            os.write(buffer,0,len);
+        }
+        os.close();
+        is.close();
+        //5.关闭流资源
+
     }
 }
